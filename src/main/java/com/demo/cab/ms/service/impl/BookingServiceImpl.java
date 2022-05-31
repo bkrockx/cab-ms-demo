@@ -86,6 +86,7 @@ public class BookingServiceImpl implements IBookingService {
     LOGGER.info("fetching booking details for bookingId {}", bookingId);
     Optional<Booking> booking = bookingRepository.findById(bookingId);
     if(!booking.isPresent()){
+      LOGGER.error("booking not found for bookingId {}", bookingId);
       throw new BadRequest("booking not found");
     }
     Booking bookingFromDb = booking.get();
