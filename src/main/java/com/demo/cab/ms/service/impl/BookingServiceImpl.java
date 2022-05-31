@@ -69,6 +69,7 @@ public class BookingServiceImpl implements IBookingService {
     }
     Optional<Booking> booking = bookingRepository.findById(bookingId);
     if(!booking.isPresent()){
+      LOGGER.error("fetching booking details for bookingId {}", bookingId);
       throw new BadRequest("booking not found");
     }
     Booking currentBooking = booking.get();
