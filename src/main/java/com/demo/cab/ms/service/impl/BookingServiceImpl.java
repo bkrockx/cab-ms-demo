@@ -58,6 +58,7 @@ public class BookingServiceImpl implements IBookingService {
     currentBooking.setDriverUserId(vehicle.getDriverId());
     currentBooking.setBookingStatus(BookingStatus.CONFIRMED);
     vehicle.setAvailable(false);
+    LOGGER.info("saving booking for driver {}", driverId);
     return bookingRepository.save(currentBooking);
   }
 
